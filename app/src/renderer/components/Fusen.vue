@@ -38,6 +38,7 @@
       });
 
       ipcRenderer.on('initData:res', (e, data) => {
+        document.title = data.title;
         this.$data.title = data.title;
         this.$refs.title.value = data.title;
         this.$data.contents = data.contents;
@@ -70,6 +71,7 @@
           this.$data.error = null;
         }
         if (this.$data.title && this.$data.contents) {
+          document.title = this.$data.title;
           ipcRenderer.send('save', {
             titleUpdate,
             title: this.$data.title,

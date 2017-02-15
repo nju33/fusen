@@ -3,7 +3,6 @@
 import fs from 'fs';
 import path from 'path';
 import {ipcMain, app, BrowserWindow, Menu, MenuItem, Tray, globalShortcut} from 'electron';
-import menubar from 'menubar';
 import glob from 'glob';
 
 const appDir = path.join(app.getPath('home'), '.fusen');
@@ -75,6 +74,16 @@ function createTray() {
 }
 
 function createFusen(data = null) {
+  if (data !== null) {
+    const target = BrowserWindow.getAllWindows().find(win => {
+      return data.title === win.webContents.getTitle();
+    });
+    if (target) {
+      target.focus();
+      return;
+    }
+  }
+
   let win = new BrowserWindow({
     height: 200,
     width: 324,

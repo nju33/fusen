@@ -4,10 +4,13 @@
   "description": "An electron-vue project",
   "main": "./dist/main.js",
   "dependencies": {
+    "glob": "^7.1.1",
     "vue": "^2.1.10",
     "vue-electron": "^1.0.6",
     "vuex": "^2.1.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.23.1"
+  },
   "author": "nju33 <nju33.ki@gmail.com>"
 }
