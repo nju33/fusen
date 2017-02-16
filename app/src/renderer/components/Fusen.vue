@@ -123,6 +123,7 @@
     position: relative;
     padding-bottom: .75em;
     box-sizing: border-box;
+    background: #f8f8f8;
   }
 
   aside.error {
