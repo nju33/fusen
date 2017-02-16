@@ -68,7 +68,7 @@ try {
 }
 
 function createTray() {
-  tray = new Tray(path.resolve(__dirname, '../../icons/tray.png'));
+  tray = new Tray(path.resolve(__dirname, './images/tray.png'));
   tray.setToolTip('Fusen');
   tray.setContextMenu(buildTrayContextMenu());
 }
@@ -115,12 +115,6 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
-
-app.on('activate', () => {
-  if (mainWindow === null) {
-    createWindow()
-  }
-});
 
 ipcMain.on('delete-file', (e, name) => {
   const filename = path.join(appDir, `${name}.json`);
