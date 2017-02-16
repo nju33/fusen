@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" :class="{'is-compact-mode': compactMode}">
     <input ref="title" @change="handleChange($event)" type="text" class="title" :class="{error: error}" placeholder="✎ Title"/>
     <aside class="error" v-text="error" :style="{display: error ? 'inline-block' : 'none'}"></aside>
     <div ref="editor" class="editor"></div>
@@ -19,6 +19,11 @@
         title: '',
         contents: '',
         error: null
+      }
+    },
+    computed: {
+      compactMode() {
+        return this.$store.state.headerButton.compactMode;
       }
     },
     methods: {
@@ -164,5 +169,13 @@
     outline: none;
     background-color: #f8f8f8;
     overflow: scroll;
+  }
+
+  .is-compact-mode {
+    height: auto;
+  }
+
+  .is-compact-mode .editor {
+    display: none;
   }
 </style>

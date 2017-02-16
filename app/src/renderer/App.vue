@@ -6,15 +6,45 @@
 </template>
 
 <script>
+  import {ipcRenderer} from 'electron';
   import TitleBar from 'components/TitleBar.vue';
   import Fusen from 'components/Fusen.vue';
   import store from 'renderer/vuex/store';
+  import debounce from 'lodash.debounce';
+
   export default {
     components: {
       TitleBar,
       Fusen
     },
-    store
+    store,
+    mounted() {
+      const cache = {
+        viewHeight: document.body.clientHeight
+      };
+
+      const handleResize = debounce(e => {
+        cache.viewHeight = document.body.clientHeight;
+      }, 100);
+
+      ipcRenderer.send('set resize handler')
+      ipcRenderer.on('resize', handleResize);
+
+      this.$store.watch(state => state.headerButton.compactMode, bool => {
+        const viewHeight = document.body.clientHeight
+        if (bool) {
+          cache.viewHeight = viewHeight;
+          setTimeout(() => {
+            ipcRenderer.send('compact mode', {height: viewHeight});
+          }, 0);
+        } else {
+          setTimeout(() => {
+            ipcRenderer.send('compact mode', {height: cache.viewHeight});
+          }, 0);
+        }
+
+      });
+    }
   }
 </script>
 
