@@ -148,15 +148,3 @@ ipcMain.on('save', (e, data) => {
     e.sender.send('save:complete');
   });
 });
-
-ipcMain.on('compact mode', (e, data) => {
-  const win = BrowserWindow.getFocusedWindow();
-  win.setBounds(Object.assign(win.getBounds(), {height: data.height}));
-});
-
-ipcMain.on('set resize handler', e => {
-  const win = BrowserWindow.getFocusedWindow();
-  win.on('resize', () => {
-    e.sender.send('resize');
-  });
-});

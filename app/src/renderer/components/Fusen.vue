@@ -2,6 +2,7 @@
   <div class="container" :class="{'is-compact-mode': compactMode}">
     <input ref="title" @change="handleChange($event)" type="text" class="title" :class="{error: error}" placeholder="✎ Title"/>
     <aside class="error" v-text="error" :style="{display: error ? 'inline-block' : 'none'}"></aside>
+    <div class="typing" ref="typing"></div>
     <div ref="editor" class="editor"></div>
   </div>
 </template>
@@ -11,6 +12,8 @@
   import MediumEditor from 'medium-editor';
   import 'medium-editor/dist/css/medium-editor.min.css';
   import debounce from 'lodash.debounce';
+  import dateformat from 'dateformat';
+  import {init} from 'ityped';
 
   export default {
     name: 'landing-page',
@@ -68,7 +71,10 @@
       ipcRenderer.on('save:error:exists', (e, err) => {
         this.$data.error = err.message;
       });
+
+      const handleSaveComplete = debounce(saveLog, 500);
       ipcRenderer.on('save:complete', () => {
+        handleSaveComplete.call(this);
       });
 
       function save(titleUpdate = true) {
@@ -83,6 +89,13 @@
             contents: this.$data.contents
           });
         }
+      }
+
+      function saveLog() {
+        this.$refs.typing.innerHTML = ''
+        init(this.$refs.typing, {
+          strings: [`Save at ${dateformat(new Date(), 'TT h:MM')}`],
+        });
       }
     }
   }
@@ -108,6 +121,8 @@
   .container {
     height: calc(100vh - 24px);
     position: relative;
+    padding-bottom: .75em;
+    box-sizing: border-box;
   }
 
   aside.error {
@@ -177,5 +192,14 @@
 
   .is-compact-mode .editor {
     display: none;
+  }
+
+  .typing {
+    position: absolute;
+    bottom: .2em;
+    right: .5em;
+    z-index: 9;
+    font-size: .8em;
+    opacity: .65;
   }
 </style>

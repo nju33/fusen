@@ -20,26 +20,35 @@
     store,
     mounted() {
       const cache = {
+        compactFlag: false,
         viewHeight: document.body.clientHeight
       };
 
       const handleResize = debounce(e => {
+        if (cache.compactFlag) {
+          return;
+        }
+
         cache.viewHeight = document.body.clientHeight;
+        cache.compactFlag = false;
       }, 100);
 
-      ipcRenderer.send('set resize handler')
-      ipcRenderer.on('resize', handleResize);
+      const win = this.$electron.remote.getCurrentWindow();
+      win.on('resize', handleResize);
 
       this.$store.watch(state => state.headerButton.compactMode, bool => {
-        const viewHeight = document.body.clientHeight
         if (bool) {
-          cache.viewHeight = viewHeight;
+          cache.compactFlag = true;
           setTimeout(() => {
-            ipcRenderer.send('compact mode', {height: viewHeight});
+            win.setBounds(Object.assign(win.getBounds(), {
+              height: document.body.clientHeight
+            }));
           }, 0);
         } else {
           setTimeout(() => {
-            ipcRenderer.send('compact mode', {height: cache.viewHeight});
+            win.setBounds(Object.assign(win.getBounds(), {
+              height: cache.viewHeight
+            }));
           }, 0);
         }
 
