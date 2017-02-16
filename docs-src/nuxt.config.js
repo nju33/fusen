@@ -3,7 +3,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'Sticky note application - Futon',
+    title: 'Sticky note application - Fusen',
     htmlAttrs: { lang: 'ja' },
     meta: [
       { charset: 'utf-8' },
@@ -42,7 +42,7 @@ module.exports = {
   },
 
   router: {
-    base: '/futon/'
+    base: '/fusen/'
   },
 
   generate: {

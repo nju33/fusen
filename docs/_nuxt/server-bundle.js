@@ -61,7 +61,7 @@ module.exports =
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/futon/_nuxt/";
+/******/ 	__webpack_require__.p = "/fusen/_nuxt/";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 146);
@@ -1269,7 +1269,7 @@ function getContext(context) {
 
     route: context.to ? context.to : context.route,
     error: context.error,
-    base: '/futon/',
+    base: '/fusen/',
     env: {}
   };
   var next = context.next;
@@ -1588,7 +1588,7 @@ var scrollBehavior = function scrollBehavior(to, from, savedPosition) {
 
 /* harmony default export */ __webpack_exports__["a"] = new __WEBPACK_IMPORTED_MODULE_1_vue_router___default.a({
   mode: 'history',
-  base: '/futon/',
+  base: '/fusen/',
   linkActiveClass: 'nuxt-link-active',
   scrollBehavior: scrollBehavior,
   routes: [{
@@ -1626,7 +1626,7 @@ var layouts = {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = {
-  head: { "title": "Sticky note application - Futon", "htmlAttrs": { "lang": "ja" }, "meta": [{ "charset": "utf-8" }, { "name": "viewport", "content": "width=device-width, initial-scale=1" }, { "hid": "description", "name": "Sticky note application made with Electron", "content": "Nuxt.js project" }], "link": [{ "rel": "icon", "type": "image/x-icon", "href": "/favicon.ico" }] },
+  head: { "title": "Sticky note application - Fusen", "htmlAttrs": { "lang": "ja" }, "meta": [{ "charset": "utf-8" }, { "name": "viewport", "content": "width=device-width, initial-scale=1" }, { "hid": "description", "name": "Sticky note application made with Electron", "content": "Nuxt.js project" }], "link": [{ "rel": "icon", "type": "image/x-icon", "href": "/favicon.ico" }] },
   data: function data() {
     return {
       layout: null,
@@ -3800,7 +3800,7 @@ var _app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a(__WEBPACK_IMPORTED_MO
     }
     opts.query = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_querystring__["stringify"])(opts.query);
     opts.path = opts.path + (opts.query ? '?' + opts.query : '');
-    opts.path = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__utils__["a" /* urlJoin */])('/futon/', opts.path);
+    opts.path = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__utils__["a" /* urlJoin */])('/fusen/', opts.path);
     context.res.writeHead(opts.status, {
       'Location': opts.path
     });
