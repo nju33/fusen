@@ -4,7 +4,7 @@
     <h1 class="title">
       Sticky note application made with Electron
     </h1>
-    <a class="button" href="https://github.com/nju33/fusen/releases/tag/0.0.1">
+    <a class="button" href="https://github.com/nju33/fusen/releases/tag/0.0.2">
       Download
     </a>
   </section>

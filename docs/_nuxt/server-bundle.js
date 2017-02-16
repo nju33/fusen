@@ -3545,7 +3545,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("\n    Sticky note application made with Electron\n  ")]), _c('a', {
     staticClass: "button",
     attrs: {
-      "href": "https://github.com/nju33/fusen/releases/tag/0.0.1"
+      "href": "https://github.com/nju33/fusen/releases/tag/0.0.2"
     }
   }, [_vm._v("\n    Download\n  ")])])
 }]}
