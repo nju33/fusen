@@ -41,6 +41,10 @@ module.exports = {
     }
   },
 
+  router: {
+    base: '/futon/'
+  },
+
   generate: {
     dir: '../docs'
   }
