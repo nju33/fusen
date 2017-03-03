@@ -68,7 +68,7 @@ try {
 }
 
 function createTray() {
-  tray = new Tray(path.resolve(__dirname, './images/tray.png'));
+  tray = new Tray(path.resolve(__dirname, './images/trayTemplate.png'));
   tray.setToolTip('Fusen');
   tray.setContextMenu(buildTrayContextMenu());
 }
