@@ -57,6 +57,12 @@ function buildTrayContextMenu() {
           ]
         };
       })
+    },
+    {
+      type: 'separator'
+    },
+    {
+      role: 'quit'
     }
   ]);
 }
@@ -109,6 +115,7 @@ app.on('ready', () => {
   });
   createTray();
   createMenu();
+  app.dock.hide();
 });
 
 app.on('window-all-closed', () => {
