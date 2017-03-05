@@ -1,6 +1,18 @@
-# fusen
+<h1><img src="https://github.com/nju33/fusen/blob/master/app/icons/icon.iconset/icon_32x32@2x.png?raw=true" width=30>&nbsp;Fusen</h1>
 
-> An electron-vue project
+Sticky note that slways on top 
+
+## Usage
+
+When you start it, an icon will appear in the menu bar, so open the Note from there.
+
+### Command
+
+- `CommandOrCtrl+Alt+F` open Fusen
+
+## Download
+
+From the [release page](https://github.com/nju33/fusen/releases/latest)
 
 ## Build Setup
 
